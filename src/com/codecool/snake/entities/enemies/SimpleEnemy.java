@@ -10,6 +10,8 @@ import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.geometry.Point2D;
 import javafx.scene.layout.Pane;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 // a simple enemy TODO make better ones.
@@ -27,9 +29,52 @@ public class SimpleEnemy extends GameEntity implements Animatable, Interactable 
         setImage(Globals.simpleEnemy);
         pane.getChildren().add(this);
         int speed = 1;
+
+        setStartingPosition();
+
+        this.direction = setDirection();
+        setRotate(this.direction);
+        heading = Utils.directionToVector(this.direction, speed);
+    }
+
+    public void setStartingPosition(){
+        List<Double> playerY = new ArrayList<>();
+        List<Double> playerX = new ArrayList<>();
+
+        for (GameEntity entity : Globals.getGameObjects()) {
+            if (entity instanceof SnakeHead || entity instanceof SnakeBody){
+                playerY.add(entity.getY());
+                playerX.add(entity.getX());
+            }
+        }
+
         Random rnd = new Random();
+        Double enemyX = rnd.nextDouble() * Globals.WINDOW_WIDTH;
+        Double enemyY = rnd.nextDouble() * Globals.WINDOW_HEIGHT;
+
+        for (Double pY: playerY) {
+            if (enemyY == pY){
+                enemyY += pY/4;
+            }
+        }
+
+        for (Double pX: playerX) {
+            if (enemyX == pX){
+                enemyX += pX/4;
+            }
+        }
         setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
-        setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
+        setY(enemyY);
+    }
+
+    public double setDirection() {
+        Random rnd = new Random();
+        return rnd.nextDouble() * 360;
+    }
+
+    public void collisionHandler(){
+        int speed = 1;
+        Random rnd = new Random();
 
         this.direction = setDirection();
         setRotate(this.direction);
@@ -50,15 +95,11 @@ public class SimpleEnemy extends GameEntity implements Animatable, Interactable 
         heading = Utils.directionToVector(direction, speed);
     }
 
-    public boolean snakeBodyCollision(SnakeBody snakeBody){
-        return ((getX() == snakeBody.getX()) && (getY() == snakeBody.getY()));
-    }
-
-
 
     @Override
     public void step() {
-        if (collisionCounter > 3) {
+        if (collisionCounter > 9) {
+
             destroy();
         }
 
