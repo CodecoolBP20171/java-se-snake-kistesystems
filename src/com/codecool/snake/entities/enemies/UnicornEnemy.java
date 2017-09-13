@@ -43,7 +43,6 @@ public class UnicornEnemy extends SimpleEnemy {
 
         if (playerY > this.getY()) {
             stepY = 1;
-
         } else if (playerY < this.getY()) {
             stepY = -1;
         } else {

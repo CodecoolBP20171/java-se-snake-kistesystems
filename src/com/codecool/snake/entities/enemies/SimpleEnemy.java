@@ -35,7 +35,7 @@ public class SimpleEnemy extends GameEntity implements Animatable, Interactable 
 
         setStartingPosition();
 
-        this.direction = setDirection();
+        this.direction = randomDirection();
         setRotate(this.direction);
         heading = Utils.directionToVector(this.direction, speed);
     }
@@ -67,7 +67,7 @@ public class SimpleEnemy extends GameEntity implements Animatable, Interactable 
         setY(enemyY);
     }
 
-    public double setDirection() {
+    public double randomDirection() {
         Random rnd = new Random();
         return rnd.nextDouble() * 360;
     }
@@ -83,7 +83,7 @@ public class SimpleEnemy extends GameEntity implements Animatable, Interactable 
         } else if (this.getY() > 960) {
             setY(960);
         }
-        this.direction = setDirection();
+        this.direction = randomDirection();
         setRotate(this.direction);
         heading = Utils.directionToVector(this.direction, speed);
     }

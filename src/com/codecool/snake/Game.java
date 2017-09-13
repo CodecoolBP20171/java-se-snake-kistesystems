@@ -9,6 +9,8 @@ import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 
+import java.awt.*;
+
 public class Game extends Pane {
 
     public Game() {
@@ -30,6 +32,7 @@ public class Game extends Pane {
         new SimplePowerup(this);
         new SimplePowerup(this);
         new SimplePowerup(this);
+
     }
 
     public void start() {
