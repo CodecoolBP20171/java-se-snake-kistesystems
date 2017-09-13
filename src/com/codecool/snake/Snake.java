@@ -2,7 +2,11 @@ package com.codecool.snake;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.stage.Popup;
+-import javafx.scene.image.Image;
+-import javafx.scene.layout.*;
+-import javafx.scene.media.Media;
+-import javafx.scene.media.MediaPlayer;
+-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
