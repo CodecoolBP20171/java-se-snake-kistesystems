@@ -54,12 +54,12 @@ public class SimpleEnemy extends GameEntity implements Animatable, Interactable 
         Double enemyX = rnd.nextDouble() * Globals.WINDOW_WIDTH;
         Double enemyY = rnd.nextDouble() * Globals.WINDOW_HEIGHT;
         for (Double pY: playerY) {
-            if (enemyY == pY){
+            if (enemyY < 600 && enemyY > 400){
                 enemyY += pY/2;
             }
         }
         for (Double pX: playerX) {
-            if (enemyX == pX){
+            if (enemyX < 600 && enemyX > 400){
                 enemyX += pX/2;
             }
         }
@@ -74,6 +74,15 @@ public class SimpleEnemy extends GameEntity implements Animatable, Interactable 
 
     public void collisionHandler(){
         int speed = 1;
+        if (this.getX() < 10) {
+            setX(10);
+        } else if (this.getX() > 960) {
+            setX(960);
+        } else if (this.getY() < 10) {
+            setY(10);
+        } else if (this.getY() > 960) {
+            setY(960);
+        }
         this.direction = setDirection();
         setRotate(this.direction);
         heading = Utils.directionToVector(this.direction, speed);

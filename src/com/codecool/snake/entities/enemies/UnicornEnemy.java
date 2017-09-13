@@ -33,11 +33,23 @@ public class UnicornEnemy extends SimpleEnemy {
 
     public void facePlayer(){
         getPlayerPosition();
-        distanceY = playerY - this.getY();
-        distanceX = playerX - this.getX();
         boolean aimX = (playerX > this.getX());
         boolean aimY = (playerY > this.getY());
-        if (aimX && !aimY){
+        boolean equalX = (playerX == this.getX());
+        boolean equalY = (playerY == this.getY());
+
+        setRotate(Math.toDegrees(Math.atan2(playerY-this.getY(), playerX-this.getX())) + 90);
+
+        /*
+        if (equalX && aimY){
+            setRotate(0);
+        } else if (equalX && !aimY) {
+            setRotate(180);
+        } else if (equalY && aimX) {
+            setRotate(90);
+        } else if (equalY && !aimX) {
+            setRotate(270);
+        } else if (aimX && !aimY){
             setRotate(45);
         } else if (aimX && aimY){
             setRotate(135);
@@ -45,7 +57,7 @@ public class UnicornEnemy extends SimpleEnemy {
             setRotate(225);
         } else if (!aimX && !aimY) {
             setRotate(315);
-        }
+        }*/
     }
 
     public void moveTowardsPlayer(){
