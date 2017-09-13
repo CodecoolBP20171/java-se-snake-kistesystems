@@ -33,6 +33,17 @@ public class Snake extends Application {
     public void start(Stage primaryStage) {
         Game game = new Game();
         primaryStageRef = primaryStage;
+        
+        -        backgroundMusic("BackGround.mp3");
+-
+-        Scene scene = new Scene(game, Globals.WINDOW_WIDTH, Globals.WINDOW_HEIGHT);
+-        scene.setFill(Color.GRAY);
+-
+-        BackgroundImage myBI= new BackgroundImage(new Image("Space.jpg",Globals.WINDOW_WIDTH,Globals.WINDOW_HEIGHT,false,true),
+-                BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+-                BackgroundSize.DEFAULT);
+-//then you set to your node
+-        game.setBackground(new Background(myBI));
 
         primaryStage.setTitle("Snake Game");
         primaryStage.setScene(new Scene(game, Globals.WINDOW_WIDTH, Globals.WINDOW_HEIGHT));
