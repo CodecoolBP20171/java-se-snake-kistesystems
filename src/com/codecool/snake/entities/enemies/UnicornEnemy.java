@@ -30,36 +30,6 @@ public class UnicornEnemy extends SimpleEnemy {
         }
     }
 
-
-    public void facePlayer(){
-        getPlayerPosition();
-        boolean aimX = (playerX > this.getX());
-        boolean aimY = (playerY > this.getY());
-        boolean equalX = (playerX == this.getX());
-        boolean equalY = (playerY == this.getY());
-
-        setRotate(Math.toDegrees(Math.atan2(playerY-this.getY(), playerX-this.getX())) + 90);
-
-        /*
-        if (equalX && aimY){
-            setRotate(0);
-        } else if (equalX && !aimY) {
-            setRotate(180);
-        } else if (equalY && aimX) {
-            setRotate(90);
-        } else if (equalY && !aimX) {
-            setRotate(270);
-        } else if (aimX && !aimY){
-            setRotate(45);
-        } else if (aimX && aimY){
-            setRotate(135);
-        } else if (!aimX && aimY){
-            setRotate(225);
-        } else if (!aimX && !aimY) {
-            setRotate(315);
-        }*/
-    }
-
     public void moveTowardsPlayer(){
         getPlayerPosition();
 
@@ -82,7 +52,7 @@ public class UnicornEnemy extends SimpleEnemy {
 
         setX(getX() + stepX);
         setY(getY() + stepY);
-        facePlayer();
+        setRotate(Math.toDegrees(Math.atan2(playerY-this.getY(), playerX-this.getX())) + 90);
     }
 
 
