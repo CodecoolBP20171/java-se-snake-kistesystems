@@ -46,7 +46,7 @@ public class Snake extends Application {
 -        game.setBackground(new Background(myBI));
 
         primaryStage.setTitle("Snake Game");
-        primaryStage.setScene(new Scene(game, Globals.WINDOW_WIDTH, Globals.WINDOW_HEIGHT));
+        primaryStage.setScene(scene);
         primaryStage.show();
         game.start();
     }
