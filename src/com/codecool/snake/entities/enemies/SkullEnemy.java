@@ -13,11 +13,7 @@ public class SkullEnemy extends SimpleEnemy{
 
     public SkullEnemy(Pane pane){
         super(pane);
-        setImage(Globals.skullEnemy);;
-    }
-
-    public void followRandomPath() {
-
+        setImage(Globals.skullEnemy);
     }
 
     public void apply(SnakeHead player){

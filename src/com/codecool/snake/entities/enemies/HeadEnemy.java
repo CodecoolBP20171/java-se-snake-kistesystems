@@ -9,6 +9,6 @@ public class HeadEnemy extends SimpleEnemy {
 
     public void apply(){
         collisionHandler();
-        this.music("HeadNotCool.mp3");
+        this.music("HeadNotCool.mp3", 1.5);
     }
 }

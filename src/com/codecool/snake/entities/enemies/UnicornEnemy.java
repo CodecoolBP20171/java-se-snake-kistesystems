@@ -83,7 +83,7 @@ public class UnicornEnemy extends SimpleEnemy {
     }
 
     public void apply() {
-        this.music("hit_the_sack_jack.wav");
+        this.music("aids.wav", 1);
         destroy();
     }
 }

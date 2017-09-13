@@ -20,9 +20,10 @@ public abstract class GameEntity extends ImageView {
     }
 
     MediaPlayer mediaPlayer;
-    public void music(String musicFile){
+    public void music(String musicFile, double volume){
         Media sound = new Media(new File(musicFile).toURI().toString());
         mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.setVolume(volume);
         mediaPlayer.play();
     }
 
