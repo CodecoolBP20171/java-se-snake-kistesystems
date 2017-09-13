@@ -5,6 +5,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;
 
 import java.io.File;
 
@@ -21,6 +22,9 @@ public abstract class GameEntity extends ImageView {
 
     MediaPlayer mediaPlayer;
     public void music(String musicFile, double volume){
+        if (mediaPlayer == null){
+            MediaPlayer mediaPlayer;
+        }
         Media sound = new Media(new File(musicFile).toURI().toString());
         mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.setVolume(volume);

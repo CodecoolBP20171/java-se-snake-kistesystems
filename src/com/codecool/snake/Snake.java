@@ -9,6 +9,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.File;
 
@@ -17,6 +18,12 @@ public class Snake extends Application {
     public void backgroundMusic(String musicFile){
         Media sound = new Media(new File(musicFile).toURI().toString());
         mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.setOnEndOfMedia(new Runnable() {
+            public void run() {
+                mediaPlayer.seek(Duration.seconds(30.3f));
+            }
+        });
+        mediaPlayer.setStartTime(Duration.seconds(3.3f));
         mediaPlayer.setVolume(0.2f);
         mediaPlayer.play();
     }
