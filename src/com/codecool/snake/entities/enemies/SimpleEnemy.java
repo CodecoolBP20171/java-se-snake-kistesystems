@@ -9,7 +9,10 @@ import com.codecool.snake.entities.snakes.SnakeBody;
 import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.geometry.Point2D;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -37,30 +40,27 @@ public class SimpleEnemy extends GameEntity implements Animatable, Interactable 
         heading = Utils.directionToVector(this.direction, speed);
     }
 
+
     public void setStartingPosition(){
         List<Double> playerY = new ArrayList<>();
         List<Double> playerX = new ArrayList<>();
-
         for (GameEntity entity : Globals.getGameObjects()) {
             if (entity instanceof SnakeHead || entity instanceof SnakeBody){
                 playerY.add(entity.getY());
                 playerX.add(entity.getX());
             }
         }
-
         Random rnd = new Random();
         Double enemyX = rnd.nextDouble() * Globals.WINDOW_WIDTH;
         Double enemyY = rnd.nextDouble() * Globals.WINDOW_HEIGHT;
-
         for (Double pY: playerY) {
             if (enemyY == pY){
-                enemyY += pY/4;
+                enemyY += pY/2;
             }
         }
-
         for (Double pX: playerX) {
             if (enemyX == pX){
-                enemyX += pX/4;
+                enemyX += pX/2;
             }
         }
         setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
@@ -82,8 +82,7 @@ public class SimpleEnemy extends GameEntity implements Animatable, Interactable 
 
     @Override
     public void step() {
-        if (collisionCounter > 9) {
-
+        if (collisionCounter > 99) {
             destroy();
         }
 
