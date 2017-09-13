@@ -74,25 +74,9 @@ public class SimpleEnemy extends GameEntity implements Animatable, Interactable 
 
     public void collisionHandler(){
         int speed = 1;
-        Random rnd = new Random();
-
         this.direction = setDirection();
         setRotate(this.direction);
         heading = Utils.directionToVector(this.direction, speed);
-    }
-
-    public double setDirection() {
-        Random rnd = new Random();
-        return rnd.nextDouble() * 360;
-    }
-
-    public void collisionHandler(){
-        int speed = 1;
-        Random rnd = new Random();
-
-        double direction = rnd.nextDouble() * 360;
-        setRotate(direction);
-        heading = Utils.directionToVector(direction, speed);
     }
 
 
