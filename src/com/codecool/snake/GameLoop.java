@@ -2,6 +2,8 @@ package com.codecool.snake;
 
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.Animatable;
+import com.codecool.snake.entities.enemies.SimpleEnemy;
+import com.codecool.snake.entities.enemies.SkullEnemy;
 import javafx.animation.AnimationTimer;
 import javafx.scene.control.Dialog;
 import javafx.stage.PopupWindow;
