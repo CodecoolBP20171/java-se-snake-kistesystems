@@ -2,18 +2,19 @@ package com.codecool.snake;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
--import javafx.scene.image.Image;
--import javafx.scene.layout.*;
--import javafx.scene.media.Media;
--import javafx.scene.media.MediaPlayer;
--import javafx.scene.paint.Color;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+
+import java.io.File;
 
 public class Snake extends Application {
 
     private static Stage primaryStageRef;
-
 
     MediaPlayer mediaPlayer;
     public void backgroundMusic(String musicFile){
@@ -34,16 +35,16 @@ public class Snake extends Application {
         Game game = new Game();
         primaryStageRef = primaryStage;
         
-        -        backgroundMusic("BackGround.mp3");
--
--        Scene scene = new Scene(game, Globals.WINDOW_WIDTH, Globals.WINDOW_HEIGHT);
--        scene.setFill(Color.GRAY);
--
--        BackgroundImage myBI= new BackgroundImage(new Image("Space.jpg",Globals.WINDOW_WIDTH,Globals.WINDOW_HEIGHT,false,true),
--                BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
--                BackgroundSize.DEFAULT);
--//then you set to your node
--        game.setBackground(new Background(myBI));
+        backgroundMusic("BackGround.mp3");
+
+        Scene scene = new Scene(game, Globals.WINDOW_WIDTH, Globals.WINDOW_HEIGHT);
+        scene.setFill(Color.GRAY);
+
+        BackgroundImage myBI= new BackgroundImage(new Image("Space.jpg",Globals.WINDOW_WIDTH,Globals.WINDOW_HEIGHT,false,true),
+                BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+                BackgroundSize.DEFAULT);
+        //then you set to your node
+        game.setBackground(new Background(myBI));
 
         primaryStage.setTitle("Snake Game");
         primaryStage.setScene(scene);
