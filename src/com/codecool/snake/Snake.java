@@ -7,6 +7,10 @@ import javafx.scene.layout.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -16,9 +20,9 @@ public class Snake extends Application {
 
     private static Stage primaryStageRef;
 
-    MediaPlayer mediaPlayer;
-    public void backgroundMusic(String musicFile){
-        Media sound = new Media(new File(musicFile).toURI().toString());
+    private static MediaPlayer mediaPlayer;
+    public void backgroundMusic(){
+        Media sound = new Media(new File("BackGround.mp3").toURI().toString());
         mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.setOnEndOfMedia(new Runnable() {
             public void run() {
@@ -34,8 +38,8 @@ public class Snake extends Application {
     public void start(Stage primaryStage) {
         Game game = new Game();
         primaryStageRef = primaryStage;
-        
-        backgroundMusic("BackGround.mp3");
+
+        backgroundMusic();
 
         Scene scene = new Scene(game, Globals.WINDOW_WIDTH, Globals.WINDOW_HEIGHT);
         scene.setFill(Color.GRAY);
@@ -56,4 +60,7 @@ public class Snake extends Application {
         return primaryStageRef;
     }
 
+    public static MediaPlayer getMediaPlayer() {
+        return mediaPlayer;
+    }
 }
