@@ -1,5 +1,6 @@
 package com.codecool.snake;
 
+import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.enemies.HeadEnemy;
 import com.codecool.snake.entities.enemies.UnicornEnemy;
 import com.codecool.snake.entities.enemies.SkullEnemy;
@@ -67,9 +68,18 @@ public class Game extends Pane {
                         Globals.getGameObjects();
                         Globals.pKeyPressed = false;
                         start();
+                        dialog.close();
                     });
                     restart.setOnMouseClicked(event1 -> {
-                        Globals.gameObjects.clear();
+                        for (GameEntity entity: Globals.getGameObjects()){
+                         entity.destroy();
+                        }
+                        dialog.close();
+                        
+
+                    });
+                    exit.setOnMouseClicked(event1 -> {
+                        System.exit(0);
                     });
             }
         });
