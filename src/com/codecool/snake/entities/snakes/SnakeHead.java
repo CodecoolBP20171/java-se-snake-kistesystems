@@ -12,8 +12,12 @@ import com.codecool.snake.entities.enemies.UnicornEnemy;
 import com.codecool.snake.entities.powerups.SimplePowerup;
 import javafx.geometry.Point2D;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;
 
 import javax.swing.*;
+import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 public class SnakeHead extends GameEntity implements Animatable {
@@ -81,10 +85,28 @@ public class SnakeHead extends GameEntity implements Animatable {
         }
     }
 
+    MediaPlayer mediaPlayer;
+    public void music(String musicFile, double volume, double startTimeInSeconds){
+        if (mediaPlayer == null){
+            MediaPlayer mediaPlayer;
+        }
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.setStartTime(Duration.seconds(startTimeInSeconds));
+
+        mediaPlayer.setVolume(volume);
+        mediaPlayer.play();
+        mediaPlayer.setOnPlaying(new Runnable() {
+            public void run() {
+                JOptionPane.showMessageDialog(null, "Oh geez Rick, you dead", "GAME OVER", -1);
+            }
+        });
+    }
+
     public void gameOver(){
         System.out.println("Game Over");
         Snake.getMediaPlayer().pause();
-        music("GameOver.mp3", 10.0f);
+        music("GameOver.mp3", 10.0f, 10.0f);
         destroyEveryEntity();
         Globals.gameLoop.stop();
         //JOptionPane.showMessageDialog(null, "Oh geez Rick, you dead", "GAME OVER", -1);
