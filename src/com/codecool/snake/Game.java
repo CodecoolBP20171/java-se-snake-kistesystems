@@ -6,7 +6,12 @@ import com.codecool.snake.entities.enemies.SkullEnemy;
 import com.codecool.snake.entities.powerups.SimplePowerup;
 import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 public class Game extends Pane {
 
@@ -34,7 +39,6 @@ public class Game extends Pane {
     }
 
 
-
     public void start() {
         Scene scene = getScene();
         scene.setOnKeyPressed(event -> {
@@ -42,6 +46,23 @@ public class Game extends Pane {
                 case LEFT:  Globals.leftKeyDown  = true; break;
                 case RIGHT: Globals.rightKeyDown  = true; break;
                 case P: Globals.pKeyPressed = true;
+                    final Stage dialog = new Stage();
+                    dialog.initModality(Modality.APPLICATION_MODAL);
+                    dialog.initOwner(scene.getWindow());
+                    VBox dialogVbox = new VBox(20);
+                    dialogVbox.getChildren().add(new Text("What we gonna do Rick?"));
+                    dialogVbox.getChildren().add(new Button("RESUME!44!"));
+                    dialogVbox.getChildren().add(new Button("RESTART!!4"));
+                    dialogVbox.getChildren().add(new Button("BYE"));
+                    Scene dialogScene = new Scene(dialogVbox, 500, 350);
+                    dialog.setScene(dialogScene);
+                    dialog.show();
+            }
+        });
+
+        scene.setOnMouseClicked(event -> {
+            switch (event.getButton()) {
+                case PRIMARY:
             }
         });
 
