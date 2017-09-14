@@ -10,10 +10,6 @@ public class UnicornEnemy extends SimpleEnemy {
     private int stepY;
     private double playerX;
     private double playerY;
-    double distanceY;
-    double distanceX;
-
-
 
     public UnicornEnemy(Pane pane){
         super(pane);
@@ -66,5 +62,6 @@ public class UnicornEnemy extends SimpleEnemy {
     public void apply() {
         this.music("aids.wav", 1);
         destroy();
+        new UnicornEnemy(pane);
     }
 }

@@ -54,16 +54,24 @@ public class SimpleEnemy extends GameEntity implements Animatable, Interactable 
         Double enemyX = rnd.nextDouble() * Globals.WINDOW_WIDTH;
         Double enemyY = rnd.nextDouble() * Globals.WINDOW_HEIGHT;
         for (Double pY: playerY) {
-            if (enemyY < 600 && enemyY > 400){
-                enemyY += pY/2;
+            if (enemyY < 700 && enemyY > 300){
+                if (enemyY < 600) {
+                    enemyY -= pY / 2;
+                } else if (enemyY >= 400) {
+                    enemyY += pY / 2;
+                }
             }
         }
         for (Double pX: playerX) {
-            if (enemyX < 600 && enemyX > 400){
-                enemyX += pX/2;
+            if (enemyX < 700 && enemyX > 300){
+                if (enemyX < 600) {
+                    enemyX -= pX / 2;
+                } else if (enemyY >= 400) {
+                    enemyX += pX / 2;
+                }
             }
         }
-        setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
+        setX(enemyX);
         setY(enemyY);
     }
 
@@ -76,12 +84,12 @@ public class SimpleEnemy extends GameEntity implements Animatable, Interactable 
         int speed = 1;
         if (this.getX() < 10) {
             setX(10);
-        } else if (this.getX() > 960) {
-            setX(960);
+        } else if (this.getX() > 940) {
+            setX(940);
         } else if (this.getY() < 10) {
             setY(10);
-        } else if (this.getY() > 960) {
-            setY(960);
+        } else if (this.getY() > 900) {
+            setY(900);
         }
         this.direction = randomDirection();
         setRotate(this.direction);
