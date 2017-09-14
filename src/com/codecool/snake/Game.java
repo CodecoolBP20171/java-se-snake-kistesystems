@@ -3,6 +3,7 @@ package com.codecool.snake;
 import com.codecool.snake.entities.enemies.HeadEnemy;
 import com.codecool.snake.entities.enemies.UnicornEnemy;
 import com.codecool.snake.entities.enemies.SkullEnemy;
+import com.codecool.snake.entities.powerups.Morty;
 import com.codecool.snake.entities.powerups.SimplePowerup;
 import com.codecool.snake.entities.powerups.SpeedChangerPowerup;
 import com.codecool.snake.entities.snakes.SnakeHead;
@@ -26,7 +27,7 @@ public class Game extends Pane {
 
         new SkullEnemy(this);
 
-        new SimplePowerup(this);
+        new Morty(this);
         new SpeedChangerPowerup(this);
 
 

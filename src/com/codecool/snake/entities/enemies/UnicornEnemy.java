@@ -62,5 +62,6 @@ public class UnicornEnemy extends SimpleEnemy {
     public void apply() {
         this.music("aids.wav", 1);
         destroy();
+        new UnicornEnemy(pane);
     }
 }
