@@ -87,7 +87,7 @@ public class SnakeHead extends GameEntity implements Animatable {
         music("GameOver.mp3", 10.0f);
         destroyEveryEntity();
         Globals.gameLoop.stop();
-        //JOptionPane.showMessageDialog(null, "Oh geez Rick, you dead", "GAME OVER", -1);
+        JOptionPane.showMessageDialog(null, "Oh geez Rick, you dead", "GAME OVER", -1);
     }
 
 
