@@ -2,14 +2,14 @@ package com.codecool.snake;
 
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.Animatable;
-import com.codecool.snake.entities.enemies.SimpleEnemy;
-import com.codecool.snake.entities.enemies.SkullEnemy;
 import javafx.animation.AnimationTimer;
-import javafx.scene.control.Dialog;
-import javafx.stage.PopupWindow;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.stage.Window;
-
-import java.awt.*;
 
 public class GameLoop extends AnimationTimer {
 
@@ -30,10 +30,6 @@ public class GameLoop extends AnimationTimer {
 
         if (Globals.pKeyPressed) {
             Globals.gameLoop.stop();
-            Dialog popUp = new Dialog();
-            popUp.initOwner(Snake.getPrimaryStageRef());
-            popUp.showAndWait();
-            Globals.pKeyPressed = false;
         }
     }
 }
