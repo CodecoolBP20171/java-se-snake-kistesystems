@@ -9,6 +9,7 @@ import com.codecool.snake.entities.Interactable;
 import com.codecool.snake.entities.enemies.HeadEnemy;
 import com.codecool.snake.entities.enemies.SkullEnemy;
 import com.codecool.snake.entities.enemies.UnicornEnemy;
+import com.codecool.snake.entities.powerups.Morty;
 import com.codecool.snake.entities.powerups.SimplePowerup;
 import javafx.geometry.Point2D;
 import javafx.scene.layout.Pane;
@@ -86,21 +87,15 @@ public class SnakeHead extends GameEntity implements Animatable {
                     interactable.apply(this);
                     System.out.println(interactable.getMessage());
                 }
-                if (entity instanceof SimplePowerup) {
-                    this.music("wubba.wav", 1);
-                } else if (entity instanceof HeadEnemy) {
-                    this.music("HeadDestroy.mp3", 10.0);
-                } else if (entity instanceof SkullEnemy) {
-                    this.music("oh_man.wav", 2);
-                } else if (entity instanceof UnicornEnemy) {
-                    this.music("aids.wav", 1);
-                }
             }
         }
 
         // check for game over condition
         if (isOutOfBounds() || health <= 0) {
             gameOver();
+        }
+        if (score > 200) {
+            gameWin();
         }
     }
 
@@ -124,10 +119,20 @@ public class SnakeHead extends GameEntity implements Animatable {
         mediaPlayer.play();
         mediaPlayer.setOnPlaying(new Runnable() {
             public void run() {
-                pane.getChildren().add(addText("Oh geez, Rick is dead!", 250, 200));
                 pane.getChildren().add(addText("Your score is "+ String.valueOf(score), 280, 400));
             }
         });
+    }
+
+
+    public void gameWin() {
+        System.out.println("Wubba lubba dub dub biiiatch!");
+        Snake.getMediaPlayer().pause();
+        music("Schwifty.mp3", 10.0f, 10.0f);
+        destroyEveryEntity();
+        Globals.gameLoop.stop();
+        pane.getChildren().add(addText("Your health is " + String.valueOf(health) , 290, 200));
+        pane.getChildren().add(addText("Wubba lubba dub dub biiiatch!", 100, 300));
     }
 
     public void gameOver() {
@@ -136,6 +141,7 @@ public class SnakeHead extends GameEntity implements Animatable {
         music("GameOver.mp3", 10.0f, 10.0f);
         destroyEveryEntity();
         Globals.gameLoop.stop();
+        pane.getChildren().add(addText("Oh geez, Rick is dead!", 250, 200));
         pane.getChildren().add(addText("GAME OVER", 300, 300));
         //JOptionPane.showMessageDialog(null, "Oh geez Rick, you dead", "GAME OVER", -1);
     }
