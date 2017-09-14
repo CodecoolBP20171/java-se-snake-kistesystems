@@ -22,7 +22,7 @@ public class Globals {
     public static Image simpleEnemy = new Image("judge_head.png");
     public static Image unicornEnemy = new Image("unicorn.png");
     public static Image skullEnemy = new Image("skull.png");
-    public static Image powerupBerry = new Image("rm-morty.png");
+    public static Image morty = new Image("rm-morty.png");
 
     public static boolean leftKeyDown;
     public static boolean rightKeyDown;
