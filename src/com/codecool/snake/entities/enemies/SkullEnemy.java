@@ -13,6 +13,8 @@ public class SkullEnemy extends SimpleEnemy{
 
     public SkullEnemy(Pane pane){
         super(pane);
+        setX(50);
+        setY(50);
         setImage(Globals.skullEnemy);
     }
 
