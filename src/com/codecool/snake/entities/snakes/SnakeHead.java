@@ -94,7 +94,7 @@ public class SnakeHead extends GameEntity implements Animatable {
         if (isOutOfBounds() || health <= 0) {
             gameOver();
         }
-        if (score > 200) {
+        if (score > 10) {
             gameWin();
         }
     }
@@ -111,6 +111,7 @@ public class SnakeHead extends GameEntity implements Animatable {
         if (mediaPlayer == null) {
             MediaPlayer mediaPlayer;
         }
+        MediaPlayer mediaPlayer;
         Media sound = new Media(new File(musicFile).toURI().toString());
         mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.setStartTime(Duration.seconds(startTimeInSeconds));
@@ -128,9 +129,9 @@ public class SnakeHead extends GameEntity implements Animatable {
     public void gameWin() {
         System.out.println("Wubba lubba dub dub biiiatch!");
         Snake.getMediaPlayer().pause();
-        music("Schwifty.mp3", 10.0f, 10.0f);
         destroyEveryEntity();
         Globals.gameLoop.stop();
+        music("Schwifty.mp3", 10.0f, 06.0f);
         pane.getChildren().add(addText("Your health is " + String.valueOf(health) , 290, 200));
         pane.getChildren().add(addText("Wubba lubba dub dub biiiatch!", 100, 300));
     }
