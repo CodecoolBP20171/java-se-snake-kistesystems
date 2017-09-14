@@ -11,6 +11,16 @@ public class HeadEnemy extends SimpleEnemy {
 
     public void apply(){
         collisionHandler();
+        if (getX() < 333) {
+            setX(getX()+300);
+        } else {
+            setX(getX()-300);
+        }
+        if (getY() < 333) {
+            setY(getY()+300);
+        } else {
+            setY(getY()-300);
+        }
         this.music("HeadNotCool.mp3", 1.5);
     }
 }
