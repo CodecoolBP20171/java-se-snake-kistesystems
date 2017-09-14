@@ -28,21 +28,32 @@ public class SnakeHead extends GameEntity implements Animatable {
     private static final float turnRate = 2;
     private GameEntity tail; // the last element. Needed to know where to add the next part.
     private int health;
-    Text text = new Text();
+    private int score;
+    Text textHealth = new Text();
+    Text textScore = new Text();
 
     public SnakeHead(Pane pane, int xc, int yc) {
         super(pane);
         setX(xc);
         setY(yc);
         health = 100;
+        score = 0;
         tail = this;
         setImage(Globals.snakeHead);
+
         String newText = String.valueOf(health);
-        text.setText(newText);
-        text.setX(50);
-        text.setY(50);
-        text.setFill(Color.YELLOW);
-        pane.getChildren().add(text);
+        textHealth.setText(newText);
+        textHealth.setX(50);
+        textHealth.setY(50);
+        textHealth.setFill(Color.YELLOW);
+        pane.getChildren().add(textHealth);
+
+        String newTextScore = String.valueOf(score);
+        textScore.setText(newTextScore);
+        textScore.setX(50);
+        textScore.setY(70);
+        textScore.setFill(Color.YELLOW);
+        pane.getChildren().add(textScore);
 
 
         pane.getChildren().add(this);
@@ -132,12 +143,21 @@ public class SnakeHead extends GameEntity implements Animatable {
     }
 
     public void setText(int health) {
-        this.text.setText(String.valueOf(health));
+        this.textHealth.setText(String.valueOf(health));
+    }
+
+    public void setTextScore(int score) {
+        this.textScore.setText(String.valueOf(score));
     }
 
     public void changeHealth(int diff) {
         health += diff;
         setText(health);
+    }
+
+    public void changeScore(int diff) {
+        score += diff;
+        setTextScore(score);
     }
 
     public void changeSpeed() {
