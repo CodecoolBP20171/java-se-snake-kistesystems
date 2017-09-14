@@ -14,13 +14,13 @@ import javafx.geometry.Point2D;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 import javax.swing.*;
 import java.io.File;
-import java.util.concurrent.TimeUnit;
-
 import java.util.Random;
+import javafx.scene.paint.Color;
 
 public class SnakeHead extends GameEntity implements Animatable {
 
@@ -28,6 +28,7 @@ public class SnakeHead extends GameEntity implements Animatable {
     private static final float turnRate = 2;
     private GameEntity tail; // the last element. Needed to know where to add the next part.
     private int health;
+    Text text = new Text();
 
     public SnakeHead(Pane pane, int xc, int yc) {
         super(pane);
@@ -36,6 +37,14 @@ public class SnakeHead extends GameEntity implements Animatable {
         health = 100;
         tail = this;
         setImage(Globals.snakeHead);
+        String newText = String.valueOf(health);
+        text.setText(newText);
+        text.setX(50);
+        text.setY(50);
+        text.setFill(Color.YELLOW);
+        pane.getChildren().add(text);
+
+
         pane.getChildren().add(this);
 
         addPart(4);
@@ -122,8 +131,13 @@ public class SnakeHead extends GameEntity implements Animatable {
         }
     }
 
+    public void setText(int health) {
+        this.text.setText(String.valueOf(health));
+    }
+
     public void changeHealth(int diff) {
         health += diff;
+        setText(health);
     }
 
     public void changeSpeed() {
