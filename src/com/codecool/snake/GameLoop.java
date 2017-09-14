@@ -31,6 +31,7 @@ public class GameLoop extends AnimationTimer {
         if (Globals.pKeyPressed) {
             Globals.gameLoop.stop();
         }
+
     }
 }
 
