@@ -4,6 +4,7 @@ import com.codecool.snake.entities.enemies.HeadEnemy;
 import com.codecool.snake.entities.enemies.UnicornEnemy;
 import com.codecool.snake.entities.enemies.SkullEnemy;
 import com.codecool.snake.entities.powerups.SimplePowerup;
+import com.codecool.snake.entities.powerups.SpeedChangerPowerup;
 import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
@@ -26,9 +27,7 @@ public class Game extends Pane {
         new SkullEnemy(this);
 
         new SimplePowerup(this);
-        new SimplePowerup(this);
-        new SimplePowerup(this);
-        new SimplePowerup(this);
+        new SpeedChangerPowerup(this);
 
 
     }

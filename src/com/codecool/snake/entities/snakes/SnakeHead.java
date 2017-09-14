@@ -20,9 +20,11 @@ import javax.swing.*;
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
+import java.util.Random;
+
 public class SnakeHead extends GameEntity implements Animatable {
 
-    private static final float speed = 2;
+    private static int speed = 2;
     private static final float turnRate = 2;
     private GameEntity tail; // the last element. Needed to know where to add the next part.
     private int health;
@@ -122,5 +124,10 @@ public class SnakeHead extends GameEntity implements Animatable {
 
     public void changeHealth(int diff) {
         health += diff;
+    }
+
+    public void changeSpeed() {
+        Random rnd = new Random();
+        speed = rnd.nextInt(5 - 1 + 1) + 1;
     }
 }
