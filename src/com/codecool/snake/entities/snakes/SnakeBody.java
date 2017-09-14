@@ -3,6 +3,8 @@ package com.codecool.snake.entities.snakes;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Animatable;
+import com.codecool.snake.entities.enemies.HeadEnemy;
+import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.sun.javafx.geom.Vec2d;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
@@ -36,6 +38,20 @@ public class SnakeBody extends GameEntity implements Animatable {
     }
 
     public void step() {
+        for (GameEntity entity : Globals.getGameObjects()) {
+            if (getBoundsInParent().intersects(entity.getBoundsInParent())) {
+                if (entity instanceof HeadEnemy) {
+                    HeadEnemy enemy = (HeadEnemy) entity;
+                    enemy.apply();
+                } else if (entity instanceof SimpleEnemy) {
+                    SimpleEnemy enemy = (SimpleEnemy) entity;
+                    enemy.apply();
+                    System.out.println(enemy.getMessage());
+                }
+            }
+        }
+
+
         Vec2d pos = history.poll(); // remove the oldest item from the history
         setX(pos.x);
         setY(pos.y);
