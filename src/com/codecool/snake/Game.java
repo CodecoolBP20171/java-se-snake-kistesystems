@@ -12,6 +12,7 @@ import javafx.scene.layout.Pane;
 public class Game extends Pane {
 
     public Game() {
+        score = 0;
         new SnakeHead(this, 500, 500);
 
         new HeadEnemy(this);
@@ -32,7 +33,15 @@ public class Game extends Pane {
 
     }
 
+    private static int score;
 
+    public static int getScore() {
+        return score;
+    }
+
+    public static void increaseScoreBy(int score) {
+        Game.score += score;
+    }
 
     public void start() {
         Scene scene = getScene();
