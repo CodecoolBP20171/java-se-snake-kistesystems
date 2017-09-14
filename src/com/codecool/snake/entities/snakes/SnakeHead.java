@@ -14,13 +14,14 @@ import javafx.geometry.Point2D;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 import javax.swing.*;
 import java.io.File;
-import java.util.concurrent.TimeUnit;
-
 import java.util.Random;
+import javafx.scene.paint.Color;
 
 public class SnakeHead extends GameEntity implements Animatable {
 
@@ -28,14 +29,36 @@ public class SnakeHead extends GameEntity implements Animatable {
     private static final float turnRate = 2;
     private GameEntity tail; // the last element. Needed to know where to add the next part.
     private int health;
+    private int score;
+    Text textHealth = new Text();
+    Text textScore = new Text();
 
     public SnakeHead(Pane pane, int xc, int yc) {
         super(pane);
         setX(xc);
         setY(yc);
         health = 100;
+        score = 0;
         tail = this;
         setImage(Globals.snakeHead);
+
+        String newText = "Health: " + String.valueOf(health);
+        textHealth.setText(newText);
+        textHealth.setX(50);
+        textHealth.setY(50);
+        textHealth.setFill(Color.YELLOW);
+        textHealth.setFont(new Font(20));
+        pane.getChildren().add(textHealth);
+
+        String newTextScore = "Score: " + String.valueOf(score);
+        textScore.setText(newTextScore);
+        textScore.setX(50);
+        textScore.setY(70);
+        textScore.setFill(Color.YELLOW);
+        textScore.setFont(new Font(20));
+        pane.getChildren().add(textScore);
+
+
         pane.getChildren().add(this);
 
         addPart(4);
@@ -122,8 +145,22 @@ public class SnakeHead extends GameEntity implements Animatable {
         }
     }
 
+    public void setText(int health) {
+        this.textHealth.setText("health: " + String.valueOf(health));
+    }
+
+    public void setTextScore(int score) {
+        this.textScore.setText("score: " + String.valueOf(score));
+    }
+
     public void changeHealth(int diff) {
         health += diff;
+        setText(health);
+    }
+
+    public void changeScore(int diff) {
+        score += diff;
+        setTextScore(score);
     }
 
     public void changeSpeed() {
