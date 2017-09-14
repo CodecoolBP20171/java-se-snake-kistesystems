@@ -9,6 +9,7 @@ import com.codecool.snake.entities.Interactable;
 import com.codecool.snake.entities.enemies.HeadEnemy;
 import com.codecool.snake.entities.enemies.SkullEnemy;
 import com.codecool.snake.entities.enemies.UnicornEnemy;
+import com.codecool.snake.entities.powerups.Morty;
 import com.codecool.snake.entities.powerups.SimplePowerup;
 import javafx.geometry.Point2D;
 import javafx.scene.layout.Pane;
@@ -86,7 +87,7 @@ public class SnakeHead extends GameEntity implements Animatable {
                     interactable.apply(this);
                     System.out.println(interactable.getMessage());
                 }
-                if (entity instanceof SimplePowerup) {
+                if (entity instanceof Morty) {
                     this.music("wubba.wav", 1);
                 } else if (entity instanceof HeadEnemy) {
                     this.music("HeadDestroy.mp3", 10.0);
