@@ -51,7 +51,7 @@ public class Game extends Pane {
                     dialog.initOwner(scene.getWindow());
                     VBox dialogVbox = new VBox(20);
                     dialogVbox.getChildren().add(new Text("What we gonna do Rick?"));
-                    dialogVbox.getChildren().add(new Button("RESUME!44!"));
+                    dialogVbox.getChildren().add(new Button("RESUME!!44!"));
                     dialogVbox.getChildren().add(new Button("RESTART!!4"));
                     dialogVbox.getChildren().add(new Button("BYE"));
                     Scene dialogScene = new Scene(dialogVbox, 500, 350);
@@ -60,11 +60,6 @@ public class Game extends Pane {
             }
         });
 
-        scene.setOnMouseClicked(event -> {
-            switch (event.getButton()) {
-                case PRIMARY:
-            }
-        });
 
         scene.setOnKeyReleased(event -> {
             switch (event.getCode()) {
