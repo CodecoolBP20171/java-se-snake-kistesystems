@@ -7,6 +7,8 @@ public class HeadEnemy extends SimpleEnemy {
         super(pane);
     }
 
+
+
     public void apply(){
         collisionHandler();
         this.music("HeadNotCool.mp3", 1.5);
