@@ -42,7 +42,7 @@ public class SnakeHead extends GameEntity implements Animatable {
         tail = this;
         setImage(Globals.snakeHead);
 
-        String newText = "health: " + String.valueOf(health);
+        String newText = "Health: " + String.valueOf(health);
         textHealth.setText(newText);
         textHealth.setX(50);
         textHealth.setY(50);
@@ -50,7 +50,7 @@ public class SnakeHead extends GameEntity implements Animatable {
         textHealth.setFont(new Font(20));
         pane.getChildren().add(textHealth);
 
-        String newTextScore = "score: " + String.valueOf(score);
+        String newTextScore = "Score: " + String.valueOf(score);
         textScore.setText(newTextScore);
         textScore.setX(50);
         textScore.setY(70);
