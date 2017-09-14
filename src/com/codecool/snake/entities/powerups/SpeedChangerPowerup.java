@@ -11,7 +11,7 @@ import java.util.Random;
 public class SpeedChangerPowerup extends GameEntity implements Interactable {
     public SpeedChangerPowerup(Pane pane) {
         super(pane);
-        setImage(Globals.speedDown);
+        setImage(Globals.speedChanger);
         pane.getChildren().add(this);
 
         Random rnd = new Random();
