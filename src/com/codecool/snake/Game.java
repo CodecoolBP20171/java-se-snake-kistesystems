@@ -63,11 +63,13 @@ public class Game extends Pane {
                     dialogVbox.getChildren().add(exit);
                     Scene dialogScene = new Scene(dialogVbox, 500, 350);
                     dialog.setScene(dialogScene);
+                    Snake.getMediaPlayer().pause();
                     dialog.show();
                     resume.setOnMouseClicked(event1 -> {
                         Globals.getGameObjects();
                         Globals.pKeyPressed = false;
                         start();
+                        Snake.getMediaPlayer().play();
                         dialog.close();
                     });
                     restart.setOnMouseClicked(event1 -> {
