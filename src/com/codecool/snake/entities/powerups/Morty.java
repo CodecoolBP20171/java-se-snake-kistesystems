@@ -9,6 +9,7 @@ public class Morty extends SimplePowerup {
     }
     public void apply(SnakeHead snakeHead){
         super.apply(snakeHead);
+        this.music("wubba.wav", 1);
         new Morty(pane);
     }
 }

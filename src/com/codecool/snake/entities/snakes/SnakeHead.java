@@ -87,15 +87,6 @@ public class SnakeHead extends GameEntity implements Animatable {
                     interactable.apply(this);
                     System.out.println(interactable.getMessage());
                 }
-                if (entity instanceof Morty) {
-                    this.music("wubba.wav", 1);
-                } else if (entity instanceof HeadEnemy) {
-                    this.music("HeadDestroy.mp3", 10.0);
-                } else if (entity instanceof SkullEnemy) {
-                    this.music("oh_man.wav", 2);
-                } else if (entity instanceof UnicornEnemy) {
-                    this.music("aids.wav", 1);
-                }
             }
         }
 

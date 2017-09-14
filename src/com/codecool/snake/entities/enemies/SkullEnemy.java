@@ -18,7 +18,22 @@ public class SkullEnemy extends SimpleEnemy{
         setImage(Globals.skullEnemy);
     }
 
+    public void apply() {
+        collisionHandler();
+        if (getX() < 333) {
+            setX(getX() + 300);
+        } else {
+            setX(getX() - 300);
+        }
+        if (getY() < 333) {
+            setY(getY() + 300);
+        } else {
+            setY(getY() - 300);
+        }
+    }
+
     public void apply(SnakeHead player){
+        this.music("oh_man.wav", 2);
         player.gameOver();
     }
 
