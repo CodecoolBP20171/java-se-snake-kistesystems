@@ -18,6 +18,10 @@ import javafx.stage.Stage;
 public class Game extends Pane {
 
     public Game() {
+        creator();
+    }
+
+    void creator(){
         new SnakeHead(this, 500, 500);
 
         new HeadEnemy(this);
@@ -36,9 +40,7 @@ public class Game extends Pane {
         new SimplePowerup(this);
         new SimplePowerup(this);
         new SimplePowerup(this);
-
     }
-
 
     public void start() {
         Button resume = new Button("RESUME!!44!");
@@ -74,8 +76,10 @@ public class Game extends Pane {
                         }
                         this.getChildren().clear();
                         dialog.close();
+                        Globals.pKeyPressed = false;
                         Globals.gameLoop = new GameLoop();
                         Globals.gameLoop.start();
+                        creator();
 
                     });
 
