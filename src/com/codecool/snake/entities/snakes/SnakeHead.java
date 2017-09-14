@@ -90,7 +90,7 @@ public class SnakeHead extends GameEntity implements Animatable {
                     this.music("wubba.wav", 1);
                 } else if (entity instanceof HeadEnemy) {
                     this.music("HeadDestroy.mp3", 10.0);
-                } else if (entity instanceof SkullEnemy){
+                } else if (entity instanceof SkullEnemy) {
                     this.music("oh_man.wav", 2);
                 } else if (entity instanceof UnicornEnemy) {
                     this.music("aids.wav", 1);
@@ -104,15 +104,16 @@ public class SnakeHead extends GameEntity implements Animatable {
         }
     }
 
-    public void destroyEveryEntity(){
+    public void destroyEveryEntity() {
         for (GameEntity entity : Globals.getGameObjects()) {
             entity.destroy();
         }
     }
 
     MediaPlayer mediaPlayer;
-    public void music(String musicFile, double volume, double startTimeInSeconds){
-        if (mediaPlayer == null){
+
+    public void music(String musicFile, double volume, double startTimeInSeconds) {
+        if (mediaPlayer == null) {
             MediaPlayer mediaPlayer;
         }
         Media sound = new Media(new File(musicFile).toURI().toString());
@@ -123,17 +124,19 @@ public class SnakeHead extends GameEntity implements Animatable {
         mediaPlayer.play();
         mediaPlayer.setOnPlaying(new Runnable() {
             public void run() {
-                JOptionPane.showMessageDialog(null, "Oh geez Rick, you dead", "GAME OVER", -1);
+                pane.getChildren().add(addText("Oh geez, Rick is dead!", 250, 200));
+                pane.getChildren().add(addText("Your score is "+ String.valueOf(score), 280, 400));
             }
         });
     }
 
-    public void gameOver(){
+    public void gameOver() {
         System.out.println("Game Over");
         Snake.getMediaPlayer().pause();
         music("GameOver.mp3", 10.0f, 10.0f);
         destroyEveryEntity();
         Globals.gameLoop.stop();
+        pane.getChildren().add(addText("GAME OVER", 300, 300));
         //JOptionPane.showMessageDialog(null, "Oh geez Rick, you dead", "GAME OVER", -1);
     }
 
@@ -145,17 +148,28 @@ public class SnakeHead extends GameEntity implements Animatable {
         }
     }
 
-    public void setText(int health) {
-        this.textHealth.setText("health: " + String.valueOf(health));
+    public Text addText(String textBody, int x, int y) {
+        Text text = new Text();
+        String newText = textBody;
+        text.setText(newText);
+        text.setX(x);
+        text.setY(y);
+        text.setFill(Color.YELLOW);
+        text.setFont(new Font(50));
+        return text;
+    }
+
+    public void setTextHealth(int health) {
+        this.textHealth.setText("Health: " + String.valueOf(health));
     }
 
     public void setTextScore(int score) {
-        this.textScore.setText("score: " + String.valueOf(score));
+        this.textScore.setText("Score: " + String.valueOf(score));
     }
 
     public void changeHealth(int diff) {
         health += diff;
-        setText(health);
+        setTextHealth(health);
     }
 
     public void changeScore(int diff) {
