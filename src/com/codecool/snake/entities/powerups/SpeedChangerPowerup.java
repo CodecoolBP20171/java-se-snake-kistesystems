@@ -1,5 +1,6 @@
 package com.codecool.snake.entities.powerups;
 
+import com.codecool.snake.Game;
 import com.codecool.snake.Globals;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.Interactable;
@@ -23,6 +24,7 @@ public class SpeedChangerPowerup extends GameEntity implements Interactable {
     public void apply(SnakeHead snakeHead) {
         snakeHead.changeSpeed();
         destroy();
+        Game.increaseScoreBy(50);
         new SpeedChangerPowerup(pane);
     }
 
