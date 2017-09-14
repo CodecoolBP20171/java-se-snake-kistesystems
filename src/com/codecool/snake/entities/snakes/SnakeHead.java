@@ -14,6 +14,7 @@ import javafx.geometry.Point2D;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
@@ -41,18 +42,20 @@ public class SnakeHead extends GameEntity implements Animatable {
         tail = this;
         setImage(Globals.snakeHead);
 
-        String newText = String.valueOf(health);
+        String newText = "health: " + String.valueOf(health);
         textHealth.setText(newText);
         textHealth.setX(50);
         textHealth.setY(50);
         textHealth.setFill(Color.YELLOW);
+        textHealth.setFont(new Font(20));
         pane.getChildren().add(textHealth);
 
-        String newTextScore = String.valueOf(score);
+        String newTextScore = "score: " + String.valueOf(score);
         textScore.setText(newTextScore);
         textScore.setX(50);
         textScore.setY(70);
         textScore.setFill(Color.YELLOW);
+        textScore.setFont(new Font(20));
         pane.getChildren().add(textScore);
 
 
@@ -143,11 +146,11 @@ public class SnakeHead extends GameEntity implements Animatable {
     }
 
     public void setText(int health) {
-        this.textHealth.setText(String.valueOf(health));
+        this.textHealth.setText("health: " + String.valueOf(health));
     }
 
     public void setTextScore(int score) {
-        this.textScore.setText(String.valueOf(score));
+        this.textScore.setText("score: " + String.valueOf(score));
     }
 
     public void changeHealth(int diff) {
