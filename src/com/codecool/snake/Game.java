@@ -2,14 +2,11 @@ package com.codecool.snake;
 
 import com.codecool.snake.entities.enemies.HeadEnemy;
 import com.codecool.snake.entities.enemies.UnicornEnemy;
-import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.enemies.SkullEnemy;
 import com.codecool.snake.entities.powerups.SimplePowerup;
 import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
-
-import java.awt.*;
 
 public class Game extends Pane {
 
@@ -33,7 +30,10 @@ public class Game extends Pane {
         new SimplePowerup(this);
         new SimplePowerup(this);
 
+
     }
+
+
 
     public void start() {
         Scene scene = getScene();

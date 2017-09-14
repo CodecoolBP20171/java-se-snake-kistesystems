@@ -23,8 +23,6 @@ public class Globals {
     public static Image skullEnemy = new Image("skull.png");
     public static Image powerupBerry = new Image("rm-morty.png");
 
-    //.. put here the other images you want to use
-
     public static boolean leftKeyDown;
     public static boolean rightKeyDown;
     public static boolean pKeyPressed;
