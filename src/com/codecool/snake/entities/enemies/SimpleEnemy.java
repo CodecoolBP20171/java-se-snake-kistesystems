@@ -55,15 +55,23 @@ public class SimpleEnemy extends GameEntity implements Animatable, Interactable 
         Double enemyY = rnd.nextDouble() * Globals.WINDOW_HEIGHT;
         for (Double pY: playerY) {
             if (enemyY < 600 && enemyY > 400){
-                enemyY += pY/2;
+                if (enemyY < 500) {
+                    enemyY -= pY / 2;
+                } else if (enemyY >= 500) {
+                    enemyY += pY / 2;
+                }
             }
         }
         for (Double pX: playerX) {
             if (enemyX < 600 && enemyX > 400){
-                enemyX += pX/2;
+                if (enemyX < 500) {
+                    enemyX -= pX / 2;
+                } else if (enemyY >= 500) {
+                    enemyX += pX / 2;
+                }
             }
         }
-        setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
+        setX(enemyX);
         setY(enemyY);
     }
 
