@@ -22,6 +22,9 @@ import java.awt.event.MouseEvent;
 public class Game extends Pane {
 
     public Game() {
+        creator();
+    }
+    void creator(){
         new SnakeHead(this, 500, 500);
 
         new HeadEnemy(this);
@@ -77,6 +80,10 @@ public class Game extends Pane {
                          entity.destroy();
                         }
                         dialog.close();
+                        Globals.pKeyPressed = false;
+                        creator();
+                        Globals.gameLoop = new GameLoop();
+                        Globals.gameLoop.start();
                         
 
                     });
