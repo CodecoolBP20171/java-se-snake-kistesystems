@@ -8,7 +8,6 @@ import com.codecool.snake.entities.powerups.Morty;
 import com.codecool.snake.entities.powerups.SimplePowerup;
 import com.codecool.snake.entities.powerups.SpeedChangerPowerup;
 import com.codecool.snake.entities.snakes.SnakeHead;
-import javafx.event.Event;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
@@ -17,11 +16,14 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import java.awt.event.MouseEvent;
 
 public class Game extends Pane {
 
     public Game() {
+        creator();
+    }
+
+    void creator(){
         new SnakeHead(this, 500, 500);
 
         new HeadEnemy(this);
@@ -36,12 +38,14 @@ public class Game extends Pane {
 
         new SkullEnemy(this);
 
+        new SimplePowerup(this);
+        new SimplePowerup(this);
+        new SimplePowerup(this);
+        new SimplePowerup(this);
+
         new Morty(this);
         new SpeedChangerPowerup(this);
-
-
     }
-
 
     public void start() {
         Button resume = new Button("RESUME!!44!");
@@ -61,7 +65,7 @@ public class Game extends Pane {
                     dialogVbox.getChildren().add(resume);
                     dialogVbox.getChildren().add(restart);
                     dialogVbox.getChildren().add(exit);
-                    Scene dialogScene = new Scene(dialogVbox, 500, 350);
+                    Scene dialogScene = new Scene(dialogVbox, Globals.POP_UP_WINDOW_WIDTH, Globals.POP_UP_WINDOW_HEIGHT);
                     dialog.setScene(dialogScene);
                     Snake.getMediaPlayer().pause();
                     dialog.show();
@@ -72,14 +76,20 @@ public class Game extends Pane {
                         Snake.getMediaPlayer().play();
                         dialog.close();
                     });
+
                     restart.setOnMouseClicked(event1 -> {
-                        for (GameEntity entity: Globals.getGameObjects()){
-                         entity.destroy();
+                        for (GameEntity gameObject: Globals.getGameObjects()){
+                            gameObject.destroy();
                         }
+                        this.getChildren().clear();
                         dialog.close();
-                        
+                        Globals.pKeyPressed = false;
+                        Globals.gameLoop = new GameLoop();
+                        Globals.gameLoop.start();
+                        creator();
 
                     });
+
                     exit.setOnMouseClicked(event1 -> {
                         System.exit(0);
                     });
