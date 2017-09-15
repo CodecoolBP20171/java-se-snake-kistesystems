@@ -13,18 +13,33 @@ public class SimplePowerup extends GameEntity implements Interactable {
 
     public SimplePowerup(Pane pane) {
         super(pane);
-        setImage(Globals.powerupBerry);
+        setImage(Globals.morty);
         pane.getChildren().add(this);
 
         Random rnd = new Random();
-        setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
-        setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
+        double x = rnd.nextDouble() * Globals.WINDOW_WIDTH;
+        double y = rnd.nextDouble() * Globals.WINDOW_HEIGHT;
+        if (x < 50) {
+            x += 50;
+        } else if (x > (Globals.WINDOW_WIDTH - 50)){
+            x -= 50;
+        }
+
+        if (y < 50) {
+            y += 50;
+        } else if (y > (Globals.WINDOW_HEIGHT - 50)){
+            y -= 50;
+        }
+
+        setX(x);
+        setY(y);
     }
 
     @Override
     public void apply(SnakeHead snakeHead) {
         snakeHead.addPart(4);
         destroy();
+        snakeHead.changeScore(10);
     }
 
     @Override

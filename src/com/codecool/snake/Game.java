@@ -4,7 +4,9 @@ import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.enemies.HeadEnemy;
 import com.codecool.snake.entities.enemies.UnicornEnemy;
 import com.codecool.snake.entities.enemies.SkullEnemy;
+import com.codecool.snake.entities.powerups.Morty;
 import com.codecool.snake.entities.powerups.SimplePowerup;
+import com.codecool.snake.entities.powerups.SpeedChangerPowerup;
 import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -40,6 +42,9 @@ public class Game extends Pane {
         new SimplePowerup(this);
         new SimplePowerup(this);
         new SimplePowerup(this);
+
+        new Morty(this);
+        new SpeedChangerPowerup(this);
     }
 
     public void start() {
@@ -62,11 +67,13 @@ public class Game extends Pane {
                     dialogVbox.getChildren().add(exit);
                     Scene dialogScene = new Scene(dialogVbox, Globals.POP_UP_WINDOW_WIDTH, Globals.POP_UP_WINDOW_HEIGHT);
                     dialog.setScene(dialogScene);
+                    Snake.getMediaPlayer().pause();
                     dialog.show();
                     resume.setOnMouseClicked(event1 -> {
                         Globals.getGameObjects();
                         Globals.pKeyPressed = false;
                         start();
+                        Snake.getMediaPlayer().play();
                         dialog.close();
                     });
 
